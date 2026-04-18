@@ -63,7 +63,7 @@ app.use((err, req, res, next) => {
   console.log("Error code:", err.code);
   console.log("Full error:", err);
 
-  // mongoose validation error
+  //mongoose validation error
   if (err.name === "ValidationError") {
     return res.status(400).json({
       message: "error occurred",
@@ -71,7 +71,7 @@ app.use((err, req, res, next) => {
     });
   }
 
-  // mongoose cast error
+  //mongoose cast error
   if (err.name === "CastError") {
     return res.status(400).json({
       message: "error occurred",
@@ -95,7 +95,7 @@ app.use((err, req, res, next) => {
 app.use((req, res, next) => {
     res.json({ message: `${req.url} is Invalid path`})
 })
-  // HANDLE CUSTOM ERRORS
+  //handle custom errors 
   if (err.status) {
     return res.status(err.status).json({
       message: "error occurred",
@@ -103,7 +103,7 @@ app.use((req, res, next) => {
     });
   }
 
-  // default server error
+  //default server error
   res.status(500).json({
     message: "error occurred",
     error: "Server side error",

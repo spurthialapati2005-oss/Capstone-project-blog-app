@@ -1,0 +1,101 @@
+### User Register
+POST http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+    "firstName": "Sriman",
+    "lastName": "Alapati",
+    "email": "Sriman@mail.com",
+    "password": "sriman1234",
+    "profileImageUrl": ""
+}
+
+### Author register
+POST http://localhost:4000/author-api/users
+Content-Type: application/json
+
+{
+    "firstName": "Murali",
+    "lastName": "Alapati",
+    "email": "Murali@gmail.com",
+    "password": "murali1234",
+    "profileImageUrl": ""   
+}
+
+### Authenticate user
+POST http://localhost:4000/common-api/authenticate
+Content-Type: application/json
+
+{
+    "email": "Sriman@mail.com",
+    "password": "sriman1234"
+}
+
+### Create article (AUTHOR)
+POST http://localhost:4000/author-api/articles
+Content-Type: application/json
+
+{
+    "author": "698cb6fbec9a96d6537d4483",
+    "title": "My second article",
+    "category": "test",
+    "content": "this is my second article"
+}
+
+### read all articles of author
+GET http://localhost:4000/author-api/articles/698cb6fbec9a96d6537d4483
+
+### edit the article
+PUT http://localhost:4000/author-api/articles
+Content-Type: application/json
+
+{
+    "author": "698cb6fbec9a96d6537d4483",
+    "articleId": "698cba2f550cd0ee6c87c6ce",
+    "title": "My first article",
+    "category":"test",
+    "content":"this is edited article"
+}
+
+### delete the article
+PATCH http://localhost:4000/author-api/articles/698cba2f550cd0ee6c87c6ce/status
+Content-Type:application/json
+
+{
+    "isArticleActive":true
+}
+
+### logout
+GET http://localhost:4000/common-api/logout
+
+### read articles by user id
+GET http://localhost:4000/user-api/users
+
+### invalid path
+GET http://localhost:4000/test
+
+### write comments to the article
+PUT http://localhost:4000/user-api/articles
+Content-Type: application/json
+
+{
+    "user":"69e3a324477d81690a8fb440",
+    "articleId":"698cba2f550cd0ee6c87c6ce",
+    "comment":"this article is amazing"
+}
+
+
+### block the user
+GET http://localhost:4000/admin-api/block-users/698ca3df7c97e254d03e1b75
+
+### unblock the user
+GET http://localhost:4000/admin-api/unblock-users/698ca3df7c97e254d03e1b75
+
+### change the password
+PUT http://localhost:4000/common-api/change-password/69e3819139e0216634fab369
+Content-Type: application/json
+
+{
+    "currentPassword":"sriman1234",
+    "newPassword":"sriman@12345"
+}

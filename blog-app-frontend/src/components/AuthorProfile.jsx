@@ -29,7 +29,7 @@ function AuthorProfile() {
       setLoading(true);
       console.log("User ID ready, fetching articles for:", userId);
       const res = await axios.get(
-        `https://capstone-project-rbl1.onrender.com/author-api/articles/${userId}`,
+        `https://capstone-project-blog-app-zk0y.onrender.com/author-api/articles/${userId}`,
         { withCredentials: true }
       );
 

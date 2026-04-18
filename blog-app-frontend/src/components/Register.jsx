@@ -25,13 +25,13 @@ function Register() {
     try {
       
       if (role === "USER") {
-        let resObj = await axios.post('https://capstone-project-rbl1.onrender.com/user-api/users', formData);
+        let resObj = await axios.post('https://capstone-project-blog-app-zk0y.onrender.com/user-api/users', formData);
         if (resObj.status === 201) {
           navigate("/login");
         }
       }
       if (role === "AUTHOR") {
-        let resObj = await axios.post('https://capstone-project-rbl1.onrender.com/author-api/users', formData);
+        let resObj = await axios.post('https://capstone-project-blog-app-zk0y.onrender.com/author-api/users', formData);
         if (resObj.status === 201) {
           navigate("/login");
         }

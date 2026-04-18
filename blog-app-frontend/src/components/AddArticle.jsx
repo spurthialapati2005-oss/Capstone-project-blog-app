@@ -34,7 +34,7 @@ function AddArticle() {
     };
 
     try {
-      const res = await axios.post('https://capstone-project-rbl1.onrender.com/author-api/articles', finalArticleObj, { 
+      const res = await axios.post('https://capstone-project-blog-app-zk0y.onrender.com/author-api/articles', finalArticleObj, { 
         withCredentials: true 
       });
 

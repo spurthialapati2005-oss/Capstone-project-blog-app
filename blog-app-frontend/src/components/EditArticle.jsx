@@ -30,7 +30,7 @@ function EditArticle({ article, setArticle, setIsEditing }) {
       // URL is just '/articles' because your backend doesn't use /:id params
       const BASE_URL = import.meta.env.VITE_API_URL;
       const res = await axios.put(
-        'https://capstone-project-rbl1.onrender.com/author-api/articles', 
+        'https://capstone-project-blog-app-zk0y.onrender.com/author-api/articles', 
         finalData, 
         { withCredentials: true }
       );

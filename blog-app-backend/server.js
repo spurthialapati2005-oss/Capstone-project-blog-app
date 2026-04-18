@@ -29,6 +29,7 @@ app.use('/author-api',authorRoute)
 app.use('/admin-api',adminRoute)
 app.use('/common-api',commonRoute)
 
+
 //connect to db
 const connectDB  = async() => {
     try {
@@ -43,10 +44,12 @@ const connectDB  = async() => {
 
 connectDB()
 
-//dealing w invalid path
-app.use((req, res, next) => {
-    res.json({ message: `${req.url} is Invalid path`})
-})
+app.get('/', (req, res) => {
+    res.status(200).json({
+        message: "Backend is running successfully 🚀"
+    });
+});
+
 
 //error handling middleware
 app.use((err, req, res, next) => {
@@ -88,7 +91,11 @@ app.use((err, req, res, next) => {
     });
   }
 
-  // ✅ HANDLE CUSTOM ERRORS
+//dealing w invalid path
+app.use((req, res, next) => {
+    res.json({ message: `${req.url} is Invalid path`})
+})
+  // HANDLE CUSTOM ERRORS
   if (err.status) {
     return res.status(err.status).json({
       message: "error occurred",

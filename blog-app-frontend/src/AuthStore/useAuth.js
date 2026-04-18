@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
+const BASE_URL = "https://capstone-project-blog-app-zk0y.onrender.com";
 export const useAuth = create((set) => ({
   currentUser: null,
   loading: false,
@@ -12,7 +13,7 @@ export const useAuth = create((set) => ({
       //set loading true
       set({ loading: true, error: null });
       //make api call
-      let res = await axios.post("http://localhost:3000/common-api/login", userCredObj, { withCredentials: true });
+      let res = await axios.post(`${BASE_URL}/common-api/login`, userCredObj, { withCredentials: true });
       // console.log("res is ", res);
       //update state
       set({
@@ -36,7 +37,7 @@ export const useAuth = create((set) => ({
       //set loading state
       set({ loading: true, error: null });
       //make logout api req
-      await axios.get("http://localhost:3000/common-api/logout", { withCredentials: true });
+      await axios.get(`${BASE_URL}/common-api/logout`, { withCredentials: true });
       //update state
       set({
         loading: false,
@@ -56,7 +57,7 @@ export const useAuth = create((set) => ({
   checkAuth: async () => {
     try {
       set({ loading: true });
-      const res = await axios.get("http://localhost:3000/common-api/check-auth", { withCredentials: true });
+      const res = await axios.get(`${BASE_URL}/common-api/check-auth`, { withCredentials: true });
 
       set({
         currentUser: res.data.payload,

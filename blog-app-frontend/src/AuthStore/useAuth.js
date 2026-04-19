@@ -13,7 +13,7 @@ export const useAuth = create((set) => ({
       //set loading true
       set({ loading: true, error: null });
       //make api call
-      let res = await axios.post(`${BASE_URL}/common-api/login`, userCredObj, { withCredentials: true });
+      let res = await axios.post(`${BASE_URL}/common-api/authenticate`, userCredObj, { withCredentials: true });
       // console.log("res is ", res);
       //update state
       set({

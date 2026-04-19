@@ -68,14 +68,14 @@ Content-Type:application/json
 ### logout
 GET http://localhost:4000/common-api/logout
 
-### read articles by user id
-GET http://localhost:4000/user-api/users
+### read all articles by user id
+GET http://localhost:4000/user-api/articles
 
 ### invalid path
 GET http://localhost:4000/test
 
 ### write comments to the article
-PUT http://localhost:4000/user-api/articles
+POST http://localhost:4000/user-api/articles
 Content-Type: application/json
 
 {

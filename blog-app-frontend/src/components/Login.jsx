@@ -25,7 +25,10 @@ function Login() {
     // If no error was set by the store, it was a success
     if (!useAuth.getState().error) {
       toast.success("Logged in Successfully");
-      if (currentUser.role === "USER") {
+
+      const currentUser = useAuth.getState().currentUser; // Get the updated user from the store
+
+      if (currentUser?.role === "USER") {
         navigate("/user-profile");
       } else if (currentUser.role === "AUTHOR") {
         navigate("/author-profile");

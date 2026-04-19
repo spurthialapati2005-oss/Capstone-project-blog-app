@@ -20,7 +20,9 @@ function Register() {
     Object.keys(userObj).forEach((key) => {
       formData.append(key, userObj[key]);
     });
-    formData.append("profileImageUrl", profileImageUrl[0]);
+    if (profileImageUrl && profileImageUrl[0]) {
+      formData.append("profileImageUrl", profileImageUrl[0]);
+    }
 
     try {
       

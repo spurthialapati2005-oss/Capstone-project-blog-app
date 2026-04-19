@@ -50,6 +50,10 @@ app.get('/', (req, res) => {
     });
 });
 
+//dealing w invalid path
+app.use((req, res, next) => {
+    res.json({ message: `${req.url} is Invalid path`})
+})
 
 //error handling middleware
 app.use((err, req, res, next) => {
@@ -91,10 +95,6 @@ app.use((err, req, res, next) => {
     });
   }
 
-//dealing w invalid path
-app.use((req, res, next) => {
-    res.json({ message: `${req.url} is Invalid path`})
-})
   //handle custom errors 
   if (err.status) {
     return res.status(err.status).json({

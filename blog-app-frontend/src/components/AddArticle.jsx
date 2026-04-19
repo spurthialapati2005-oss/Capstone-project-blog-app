@@ -6,6 +6,7 @@ import { toast } from 'react-hot-toast';
 import axios from 'axios';
 
 function AddArticle() {
+  // Watch the category to show/hide the custom input
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
     defaultValues: { category: "General" }
   });
@@ -24,11 +25,12 @@ function AddArticle() {
   const onArticleSubmit = async (data) => {
     setIsSubmitting(true);
 
+    // LOGIC: If "Other" is picked, use the custom input value
     const finalArticleObj = {
       title: data.title,
       content: data.content,
       category: data.category === "Other" ? data.customCategory : data.category,
-      isArticleActive: true
+      isArticleActive: true // CRITICAL: Ensures it shows up in Author Profile
     };
 
     try {
@@ -38,6 +40,7 @@ function AddArticle() {
 
       if (res.status === 201 || res.status === 200) {
         toast.success("Article Published!");
+        // Small timeout ensures the DB operation is finished before we fetch on profile page
         setTimeout(() => {
           navigate("/author-profile");
         }, 150);
@@ -54,32 +57,28 @@ function AddArticle() {
   if (!currentUser) return null;
 
   return (
-    <div className="min-h-screen bg-purple-50 flex items-center justify-center p-6">
-      <div className="w-full max-w-2xl bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg p-8 border border-purple-100">
-        
-        <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center tracking-tight">
-          New Story
-        </h2>
-
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
+      <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+        <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">New Story</h2>
         <form onSubmit={handleSubmit(onArticleSubmit)} className="space-y-5">
           
           {/* Title */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">Title</label>
+            <label className="block text-sm font-bold text-gray-700 mb-1">Title</label>
             <input 
               type="text" 
               {...register("title", { required: "Title is required" })} 
-              className="w-full p-3 bg-white border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none transition-all" 
+              className="w-full p-3 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" 
             />
             {errors.title && <p className="text-red-500 text-xs mt-1">{errors.title.message}</p>}
           </div>
 
-          {/* Category */}
+          {/* Category Dropdown */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">Category</label>
+            <label className="block text-sm font-bold text-gray-700 mb-1">Category</label>
             <select 
               {...register("category", { required: "Category is required" })} 
-              className="w-full p-3 bg-white border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-400 outline-none transition-all"
+              className="w-full p-3 bg-gray-50 border rounded-lg outline-none"
             >
               <option value="General">General</option>
               <option value="Programming">Programming</option>
@@ -90,16 +89,14 @@ function AddArticle() {
             </select>
           </div>
 
-          {/* Custom Category */}
+          {/* User-Defined Category Input (Shows only if 'Other' is picked) */}
           {selectedCategory === "Other" && (
             <div>
-              <label className="block text-sm font-semibold text-purple-600 mb-1">
-                Custom Category Name
-              </label>
+              <label className="block text-sm font-bold text-blue-600 mb-1">Custom Category Name</label>
               <input 
                 type="text" 
                 {...register("customCategory", { required: "Please name your category" })} 
-                className="w-full p-3 bg-purple-50 border border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-400 outline-none transition-all"
+                className="w-full p-3 bg-blue-50 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                 placeholder="Enter your topic..."
               />
               {errors.customCategory && <p className="text-red-500 text-xs mt-1">{errors.customCategory.message}</p>}
@@ -108,11 +105,11 @@ function AddArticle() {
 
           {/* Content */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">Content</label>
+            <label className="block text-sm font-bold text-gray-700 mb-1">Content</label>
             <textarea 
               {...register("content", { required: "Content is required" })} 
               rows="8" 
-              className="w-full p-3 bg-white border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-400 outline-none resize-none transition-all"
+              className="w-full p-3 bg-gray-50 border rounded-lg outline-none resize-none"
             ></textarea>
             {errors.content && <p className="text-red-500 text-xs mt-1">{errors.content.message}</p>}
           </div>
@@ -120,11 +117,10 @@ function AddArticle() {
           <button 
             type="submit" 
             disabled={isSubmitting} 
-            className="w-full py-3 bg-purple-500 text-white font-semibold rounded-xl hover:bg-purple-600 transition-all active:scale-[0.98] disabled:bg-gray-300"
+            className="w-full py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors disabled:bg-gray-400"
           >
             {isSubmitting ? 'Publishing...' : 'Publish Article'}
           </button>
-
         </form>
       </div>
     </div>

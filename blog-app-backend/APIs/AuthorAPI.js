@@ -4,6 +4,10 @@ import { checkAuthor } from "../middlewares/checkAuthor.js";
 import { verifyToken } from "../middlewares/verifyToken.js"
 import { register } from "../services/authService.js"
 import { Article } from '../models/ArticleModel.js';
+import { upload } from "../config/multer.js"
+import { uploadToCloudinary } from "../config/cloudinaryUpload.js";
+import cloudinary from "../config/cloudinary.js"
+
 export const authorRoute = exp.Router()
 
 //Register author

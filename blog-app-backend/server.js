@@ -15,7 +15,7 @@ config() // process.env
 const app = exp()   
 
 //use cors middleware
-app.use(cors({origin:["https://capstone-project-blog-app.vercel.app"], credentials:true}));
+app.use(cors({origin:["https://capstone-project-blog-app.vercel.app","http://localhost:5173"], credentials:true}));
 
 //add body parser middleware
 app.use(exp.json())

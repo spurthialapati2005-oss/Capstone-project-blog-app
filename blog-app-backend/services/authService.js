@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import { UserTypeModel } from "../models/userModel.js";
+import { UserTypeModel } from "../models/UserModel.js";
 import { config } from "dotenv";
 import { Error } from "mongoose";
 config();

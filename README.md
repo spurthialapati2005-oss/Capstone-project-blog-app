@@ -106,7 +106,7 @@ project-root/
 - Cloudinary configuration for uploads
 
 ---
-
+```text
 # APIs Used
 
 | API          | Purpose |
@@ -115,7 +115,7 @@ project-root/
 | `AuthorAPI`  | Author registration and article management |
 | `AdminAPI`   | Admin moderation APIs |
 | `CommonAPI`  | Login, logout, auth check, profile settings |
-
+```
 ---
 
 # How To Run Locally

@@ -117,14 +117,14 @@ backend/
 ---
 
 # APIs Used
-
+```text
 | API          | Purpose |
 
 | `UserAPI`    | User registration, reading articles, comments |
 | `AuthorAPI`  | Author registration and article management |
 | `AdminAPI`   | Admin moderation APIs |
 | `CommonAPI`  | Login, logout, auth check, profile settings |
-
+```
 ---
 
 # Environment Variables

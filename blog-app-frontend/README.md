@@ -63,7 +63,7 @@ This frontend provides:
 
 # Folder Structure
 
-
+```text
 frontend/
 ├── public/
 ├── src/
@@ -77,7 +77,7 @@ frontend/
 ├── package.json
 ├── vite.config.js
 └── README.md
-
+```
 ---
 
 # Main Features

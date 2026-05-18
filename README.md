@@ -30,7 +30,7 @@ The project includes:
 ---
 
 # Repository Structure
-
+```text
 project-root/
 ├── backend/
 │   ├── APIs/
@@ -55,7 +55,7 @@ project-root/
 │
 ├── vercel.json
 └── README.md
-
+```
 
 ---
 
